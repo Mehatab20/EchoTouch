@@ -1,0 +1,8 @@
+-- V3__add_updated_at_columns.sql
+
+ALTER TABLE refresh_tokens ADD COLUMN updated_at TIMESTAMP NOT NULL DEFAULT NOW();
+ALTER TABLE payment_logs ADD COLUMN updated_at TIMESTAMP NOT NULL DEFAULT NOW();
+ALTER TABLE favorite_contacts ADD COLUMN updated_at TIMESTAMP NOT NULL DEFAULT NOW();
+ALTER TABLE recent_contacts ADD COLUMN updated_at TIMESTAMP NOT NULL DEFAULT NOW();
+ALTER TABLE notifications ADD COLUMN updated_at TIMESTAMP NOT NULL DEFAULT NOW();
+ALTER TABLE audit_logs ADD COLUMN updated_at TIMESTAMP NOT NULL DEFAULT NOW();

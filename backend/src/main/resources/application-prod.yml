@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: false
+    show-sql: false
+  
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+  
+  data:
+    redis:
+      # Use REDIS_URL from environment variables, fallback to individual host/port if needed
+      url: ${REDIS_URL:redis://localhost:6379}
+      host: ${SPRING_REDIS_HOST:localhost}
+      port: ${SPRING_REDIS_PORT:6379}
+
+# Security config properties (Assuming your app reads these custom properties, you can map them to env vars)
+echotouch:
+  app:
+    jwtSecret: ${JWT_SECRET:defaultSecretKeyThatShouldBeChangedInProd}
+    jwtExpirationMs: ${JWT_EXPIRATION_MS:86400000}
+
+logging:
+  level:
+    com.echotouch: INFO
+    org.springframework.security: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: ERROR

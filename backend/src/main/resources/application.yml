@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: echotouch-backend
+  output:
+    ansi:
+      enabled: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+server:
+  port: 8080
+
+jwt:
+  secret: YS12ZXJ5LWxvbmctc2VjcmV0LWtleS10aGF0LXNob3VsZC1iZS1pbi1hbi1lbnZpcm9ubWVudC12YXJpYWJsZS1mb3ItcHJvZHVjdGlvbi11c2FnZS1lY2hvdG91Y2gtYXBp
+  expiration-ms: 3600000 # 1 hour
+  refresh-expiration-ms: 604800000 # 7 days
+
+razorpay:
+  key-id: ${RAZORPAY_KEY_ID:rzp_test_mockkeyid123}
+  key-secret: ${RAZORPAY_KEY_SECRET:mockkeysecret123}
+
